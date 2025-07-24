@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Transforming Sales Performance at cQuant.io</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --crimson-pink: #ff5386;
+            --light-purple: #c8b6ff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--crimson-pink) 0%, var(--light-purple) 100%);
+            color: var(--white);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: rotate(45deg);
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(45deg) translateY(0); }
+            100% { transform: rotate(45deg) translateY(50px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .company-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .company-info div {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .company-info strong {
+            display: block;
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        /* Impact Quote */
+        .impact-quote {
+            background: var(--light-gray);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .quote-box {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 40px;
+            font-size: 100px;
+            color: var(--crimson-pink);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 1.4em;
+            font-style: italic;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .quote-attribution {
+            color: var(--crimson-pink);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: var(--black);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--crimson-pink);
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--crimson-pink);
+            margin: 30px 0 20px;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            color: var(--black);
+            margin: 20px 0 10px;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .challenge-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--crimson-pink);
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .approach-item {
+            background: var(--white);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border-left: 5px solid var(--light-purple);
+            transition: all 0.3s ease;
+        }
+
+        .approach-item:hover {
+            border-left-color: var(--crimson-pink);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Results Section */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--crimson-pink), var(--light-purple));
+            color: var(--white);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: scale(1.05);
+        }
+
+        .result-number {
+            font-size: 3em;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .result-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--crimson-pink);
+            font-size: 0.8em;
+        }
+
+        /* Key Learnings */
+        .key-learnings {
+            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .key-learnings h2::after {
+            background: var(--light-purple);
+        }
+
+        .learning-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tech-tag {
+            background: var(--crimson-pink);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--light-purple);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--crimson-pink);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--light-purple);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            .quote-text {
+                font-size: 1.2em;
+            }
+            
+            .result-number {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transforming Sales Performance:<br>From Zero to 400% Lead Conversion Growth</h1>
+            <p class="subtitle">A case study in building revenue engines for B2B startups</p>
+            <div class="company-info">
+                <div>
+                    <strong>Company</strong>
+                    cQuant.io
+                </div>
+                <div>
+                    <strong>Industry</strong>
+                    Renewable Energy Analytics
+                </div>
+                <div>
+                    <strong>Role</strong>
+                    Founding Sales Development Representative
+                </div>
+                <div>
+                    <strong>Timeline</strong>
+                    January 2023 - March 2024
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Quote -->
+    <section class="impact-quote">
+        <div class="container">
+            <div class="quote-box fade-in">
+                <p class="quote-text">Our SDR transformed how we approach new business. We're now in active discussions with major utilities, and our brand recognition at industry events has completely changed. People know who we are before we even introduce ourselves.</p>
+                <p class="quote-attribution">— VP of Business Development, cQuant.io</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="fade-in">The Challenge</h2>
+            <p class="fade-in">When I joined cQuant.io as their first SDR, the company faced a critical growth inflection point. This seed-stage energy analytics startup had innovative technology but struggled to translate it into pipeline momentum.</p>
+            
+            <h3 class="fade-in">The reality check:</h3>
+            <div class="challenge-grid fade-in">
+                <div class="challenge-card">
+                    <h4>Zero market presence</h4>
+                    <p>Target utilities had never heard of us</p>
+                </div>
+                <div class="challenge-card">
+                    <h4>Broken sales motion</h4>
+                    <p>Account Executives spent 70% of their time on cold prospecting instead of closing deals</p>
+                </div>
+                <div class="challenge-card">
+                    <h4>No infrastructure</h4>
+                    <p>Zero outreach tools, tracking systems, or established processes</p>
+                </div>
+                <div class="challenge-card">
+                    <h4>Stagnant pipeline</h4>
+                    <p>Minimal new business generation despite strong product-market fit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="fade-in">The Mission</h2>
+            <p class="fade-in">Build a scalable revenue engine that would:</p>
+            <ul class="fade-in">
+                <li>Generate consistent, qualified pipeline growth</li>
+                <li>Establish cQuant.io as a recognized player in the utility sector</li>
+                <li>Free up AEs to focus on deal progression and closure</li>
+                <li>Create repeatable processes for future team scaling</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="fade-in">The Approach</h2>
+            
+            <div class="approach-item fade-in">
+                <h4>1. Engineered Hyper-Personalized Outreach</h4>
+                <ul>
+                    <li>Designed multi-touch campaigns specifically addressing utility pain points around grid optimization and renewable integration</li>
+                    <li>Created industry-specific messaging that resonated with technical buyers and C-suite executives</li>
+                    <li>Developed a LinkedIn engagement strategy that turned cold connections into warm conversations</li>
+                </ul>
+            </div>
+            
+            <div class="approach-item fade-in">
+                <h4>2. Built a Modern Sales Tech Stack</h4>
+                <ul>
+                    <li>Implemented Apollo.io for intelligent prospecting and automation</li>
+                    <li>Designed automated nurture sequences that maintained personalization at scale</li>
+                    <li>Created dashboards for real-time performance tracking and optimization</li>
+                </ul>
+            </div>
+            
+            <div class="approach-item fade-in">
+                <h4>3. Revolutionized the Sales Process</h4>
+                <ul>
+                    <li>Introduced a rigorous lead qualification framework (BANT+) that increased AE efficiency by 3x</li>
+                    <li>Established clear handoff protocols between SDR and AE functions</li>
+                    <li>Built a feedback loop for continuous messaging refinement based on prospect responses</li>
+                </ul>
+            </div>
+            
+            <div class="approach-item fade-in">
+                <h4>4. Executed Strategic Market Penetration</h4>
+                <ul>
+                    <li>Mapped industry events to outreach campaigns, ensuring prospects knew us before meeting us</li>
+                    <li>Launched a utility-focused campaign that opened doors to previously unreachable accounts</li>
+                    <li>Created "surround sound" effect through coordinated email, LinkedIn, and event touchpoints</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="fade-in">The Results</h2>
+            
+            <h3 class="fade-in">Quantitative Wins</h3>
+            <div class="results-grid fade-in">
+                <div class="result-card">
+                    <span class="result-number">400%</span>
+                    <span class="result-label">Lead Conversion Increase</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-number">5</span>
+                    <span class="result-label">Major Utilities in Pipeline</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-number">60%</span>
+                    <span class="result-label">AE Time Saved</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-number">Q3</span>
+                    <span class="result-label">Revenue Target Exceeded</span>
+                </div>
+            </div>
+            
+            <h3 class="fade-in">Qualitative Transformation</h3>
+            <ul class="fade-in">
+                <li><strong>Market Recognition:</strong> Prospects at conferences began approaching us instead of the reverse</li>
+                <li><strong>Sales Efficiency:</strong> AEs reported their highest close rates ever due to better-qualified opportunities</li>
+                <li><strong>Scalable Foundation:</strong> Created playbooks and processes that enabled successful hiring of new SDR and current AEs</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Key Learnings -->
+    <section class="key-learnings">
+        <div class="container">
+            <h2 class="fade-in">Key Learnings</h2>
+            <div class="learning-content fade-in">
+                <p>This experience reinforced that successful B2B sales development isn't about volume—it's about precision. By combining deep market understanding with modern sales technology and relentless optimization, even a seed-stage startup can compete effectively against established players.</p>
+                <p>The transformation at cQuant.io proves that with the right strategy and execution, a single SDR can fundamentally change a company's growth trajectory.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="fade-in">Technologies & Industries</h2>
+            <div class="tech-stack fade-in">
+                <span class="tech-tag">Apollo.io</span>
+                <span class="tech-tag">Salesforce</span>
+                <span class="tech-tag">LinkedIn Sales Navigator</span>
+                <span class="tech-tag">Tableau</span>
+                <span class="tech-tag">Utilities</span>
+                <span class="tech-tag">Renewable Energy</span>
+                <span class="tech-tag">Energy Storage</span>
+                <span class="tech-tag">Grid Operators</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Created by Dereka M. Smith 2025 | <a href="https://www.linkedin.com/in/dereka-smith426/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
